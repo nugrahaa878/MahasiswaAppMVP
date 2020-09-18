@@ -3,11 +3,14 @@ package com.nugrahaa.mahasiswaapparimvp.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import com.nugrahaa.mahasiswa_app_ari.model.Mahasiswa
 import com.nugrahaa.mahasiswaapparimvp.R
 import com.nugrahaa.mahasiswaapparimvp.presenter.input.MahasiswaPresenter
 import com.nugrahaa.mahasiswaapparimvp.presenter.input.MahasiswaView
 import kotlinx.android.synthetic.main.activity_input.*
+import kotlinx.android.synthetic.main.list_item.*
 
 class InputActivity : AppCompatActivity(), MahasiswaView {
 
@@ -18,9 +21,14 @@ class InputActivity : AppCompatActivity(), MahasiswaView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_input)
 
-        var nama = edt_nama.text.toString()
-        var nohp = edt_nohp.text.toString()
-        var alamat = edt_alamat.text.toString()
+        val getData = intent.getParcelableExtra<Mahasiswa>("DATA")
+        Log.d("DATA YANG DIBAWA ", getData?.mahasiswaNama.toString())
+
+        var nama = getData?.mahasiswaNama.toString()
+        var nohp = getData?.mahasiswaNohp.toString()
+        var alamat = getData?.mahasiswaAlamat.toString()
+
+        setEditText(nama, nohp, alamat)
 
         presenter = MahasiswaPresenter(this)
 
@@ -33,6 +41,12 @@ class InputActivity : AppCompatActivity(), MahasiswaView {
             presenter?.changeData(btn_submit.text.toString(), id, nama, nohp, alamat)
         }
 
+    }
+
+    private fun setEditText(nama: String, nohp: String, alamat: String) {
+        edt_nama.setText(nama)
+        edt_nohp.setText(nohp)
+        edt_alamat.setText(alamat)
     }
 
     override fun onStatusAdd() {
