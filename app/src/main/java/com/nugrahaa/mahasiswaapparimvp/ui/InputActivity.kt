@@ -24,7 +24,7 @@ class InputActivity : AppCompatActivity(), MahasiswaView {
 
         presenter = MahasiswaPresenter(this)
 
-        presenter?.checkStatus("asd", "asd", "asd")
+        presenter?.checkStatus(nama, nohp, alamat)
 
         btn_submit.setOnClickListener {
             nama = edt_nama.text.toString()
