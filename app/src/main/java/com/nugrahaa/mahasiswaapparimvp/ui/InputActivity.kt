@@ -10,43 +10,48 @@ import com.nugrahaa.mahasiswaapparimvp.R
 import com.nugrahaa.mahasiswaapparimvp.presenter.input.MahasiswaPresenter
 import com.nugrahaa.mahasiswaapparimvp.presenter.input.MahasiswaView
 import kotlinx.android.synthetic.main.activity_input.*
-import kotlinx.android.synthetic.main.list_item.*
 
 class InputActivity : AppCompatActivity(), MahasiswaView {
 
     private var presenter: MahasiswaPresenter? = null
+    private var nama: String? = null
+    private var nohp: String? = null
+    private var alamat: String? = null
     private var id: String = "0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_input)
 
+        presenter = MahasiswaPresenter(this)
+
         val getData = intent.getParcelableExtra<Mahasiswa>("DATA")
         Log.d("DATA YANG DIBAWA ", getData?.mahasiswaNama.toString())
 
-        var nama = getData?.mahasiswaNama.toString()
-        var nohp = getData?.mahasiswaNohp.toString()
-        var alamat = getData?.mahasiswaAlamat.toString()
+        if (getData == null) {
+            nama = edt_nama.text.toString()
+            nohp = edt_nohp.text.toString()
+            alamat = edt_alamat.text.toString()
+        } else {
+            nama = getData.mahasiswaNama
+            nohp = getData.mahasiswaNohp
+            alamat = getData.mahasiswaAlamat
+            id = getData.idMahasiswa.toString()
 
-        setEditText(nama, nohp, alamat)
+            edt_nama.setText(nama)
+            edt_alamat.setText(alamat)
+            edt_nohp.setText(nohp)
+        }
 
-        presenter = MahasiswaPresenter(this)
-
-        presenter?.checkStatus(nama, nohp, alamat)
+        presenter?.checkStatus(nama.toString(), nohp.toString(), alamat.toString())
 
         btn_submit.setOnClickListener {
             nama = edt_nama.text.toString()
             nohp = edt_nohp.text.toString()
             alamat = edt_alamat.text.toString()
-            presenter?.changeData(btn_submit.text.toString(), id, nama, nohp, alamat)
+            presenter?.changeData(btn_submit.text.toString(), id, nama!!, nohp!!, alamat!!)
         }
 
-    }
-
-    private fun setEditText(nama: String, nohp: String, alamat: String) {
-        edt_nama.setText(nama)
-        edt_nohp.setText(nohp)
-        edt_alamat.setText(alamat)
     }
 
     override fun onStatusAdd() {
