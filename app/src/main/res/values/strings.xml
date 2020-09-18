@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MahasiswaAppAriMVP</string>
+    <string name="dummy_name">Ari Angga Nugraha</string>
+    <string name="dummy_hp">081262318275</string>
+    <string name="dummy_alamat">Jl.Panorama Bukittinggi</string>
+    <string name="nama">Nama</string>
+    <string name="no_hp">No.HP</string>
+    <string name="alamat">Alamat</string>
+    <string name="simpan">Simpan</string>
+    <string name="batal">Batal</string>
+</resources>
