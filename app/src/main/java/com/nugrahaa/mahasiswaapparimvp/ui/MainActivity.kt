@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainView {
 
-    var presenter: MainPresenter? = null
+    private var presenter: MainPresenter? = null
 
     private lateinit var rvMahasiswa: RecyclerView
     private lateinit var listMahasiswaAdapter: ListMahasiswaAdapter
@@ -40,12 +40,21 @@ class MainActivity : AppCompatActivity(), MainView {
         rvMahasiswa.setHasFixedSize(true)
 
         rvMahasiswa.layoutManager = LinearLayoutManager(this)
-        listMahasiswaAdapter = ListMahasiswaAdapter(listMahasiswa)
+        listMahasiswaAdapter = ListMahasiswaAdapter(listMahasiswa, object : ListMahasiswaAdapter.OnClickListener {
+            override fun deleteMahasiswa(item: Mahasiswa?) {
+                presenter?.deleteMahasiswa(item?.idMahasiswa.toString())
+            }
+
+        })
         rvMahasiswa.adapter = listMahasiswaAdapter
 
     }
 
     override fun onError(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onSuccessDeleteData() {
+        Toast.makeText(this, "Berhasil delete data", Toast.LENGTH_LONG).show()
     }
 }

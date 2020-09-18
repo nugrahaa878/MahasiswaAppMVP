@@ -6,5 +6,6 @@ interface MainView {
 
     fun onSuccessGetAllData(listMahasiswa: ArrayList<Mahasiswa>)
     fun onError(msg: String)
+    fun onSuccessDeleteData()
 
 }

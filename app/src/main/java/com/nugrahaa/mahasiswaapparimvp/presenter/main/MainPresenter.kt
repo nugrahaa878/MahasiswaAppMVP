@@ -1,6 +1,7 @@
 package com.nugrahaa.mahasiswaapparimvp.presenter.main
 
 import com.nugrahaa.mahasiswa_app_ari.model.Mahasiswa
+import com.nugrahaa.mahasiswa_app_ari.model.ResponseAction
 import com.nugrahaa.mahasiswa_app_ari.model.ResponseMahasiswa
 import com.nugrahaa.mahasiswaapparimvp.network.ApiConfig
 import retrofit2.Call
@@ -31,6 +32,31 @@ class MainPresenter(val mainView: MainView) {
                 }
 
                 override fun onFailure(call: Call<ResponseMahasiswa>, t: Throwable) {
+                    mainView.onError(t.localizedMessage)
+                }
+
+            })
+    }
+
+    fun deleteMahasiswa(id: String) {
+        ApiConfig.getApiService().deleteData(id)
+            .enqueue(object : Callback<ResponseAction> {
+                override fun onResponse(
+                    call: Call<ResponseAction>,
+                    response: Response<ResponseAction>
+                ) {
+                    val message = response.body()?.message
+                    val isSuccess = response.body()?.isSuccess
+
+                    if (isSuccess == true) {
+                        mainView.onSuccessDeleteData()
+                        getAllData()
+                    } else {
+                        mainView.onError(message ?: "")
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseAction>, t: Throwable) {
                     mainView.onError(t.localizedMessage)
                 }
 
