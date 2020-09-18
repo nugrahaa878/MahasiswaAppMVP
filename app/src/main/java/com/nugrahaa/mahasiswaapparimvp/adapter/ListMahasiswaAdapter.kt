@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.nugrahaa.mahasiswa_app_ari.model.Mahasiswa
+import com.nugrahaa.mahasiswaapparimvp.model.Mahasiswa
 import com.nugrahaa.mahasiswaapparimvp.R
 import com.nugrahaa.mahasiswaapparimvp.ui.InputActivity
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class ListMahasiswaAdapter(private val listMahasiswa: ArrayList<Mahasiswa>, val itemClick: OnClickListener): RecyclerView.Adapter<ListMahasiswaAdapter.ListViewHolder>() {
+class ListMahasiswaAdapter(private val listMahasiswa: ArrayList<Mahasiswa>, private val itemClick: OnClickListener): RecyclerView.Adapter<ListMahasiswaAdapter.ListViewHolder>() {
 
     class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val tvName: TextView = itemView.tv_nama

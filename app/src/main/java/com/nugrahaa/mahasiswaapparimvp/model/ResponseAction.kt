@@ -1,4 +1,4 @@
-package com.nugrahaa.mahasiswa_app_ari.model
+package com.nugrahaa.mahasiswaapparimvp.model
 
 import com.google.gson.annotations.SerializedName
 

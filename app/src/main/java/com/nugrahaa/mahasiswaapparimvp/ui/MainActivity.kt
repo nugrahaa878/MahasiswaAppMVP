@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.nugrahaa.mahasiswa_app_ari.model.Mahasiswa
+import com.nugrahaa.mahasiswaapparimvp.model.Mahasiswa
 import com.nugrahaa.mahasiswaapparimvp.R
 import com.nugrahaa.mahasiswaapparimvp.adapter.ListMahasiswaAdapter
 import com.nugrahaa.mahasiswaapparimvp.presenter.main.MainPresenter

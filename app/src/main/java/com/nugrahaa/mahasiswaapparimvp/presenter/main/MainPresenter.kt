@@ -1,16 +1,11 @@
 package com.nugrahaa.mahasiswaapparimvp.presenter.main
 
-import com.nugrahaa.mahasiswa_app_ari.model.Mahasiswa
-import com.nugrahaa.mahasiswa_app_ari.model.ResponseAction
-import com.nugrahaa.mahasiswa_app_ari.model.ResponseMahasiswa
+import com.nugrahaa.mahasiswaapparimvp.model.Mahasiswa
 import com.nugrahaa.mahasiswaapparimvp.network.ApiConfig
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class MainPresenter(val mainView: MainView) {
+class MainPresenter(private val mainView: MainView) {
 
     fun getAllData() {
         ApiConfig.getApiService().getDataMahasiswa()

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.nugrahaa.mahasiswa_app_ari.model.Mahasiswa
+import com.nugrahaa.mahasiswaapparimvp.model.Mahasiswa
 import com.nugrahaa.mahasiswaapparimvp.R
 import com.nugrahaa.mahasiswaapparimvp.presenter.input.MahasiswaPresenter
 import com.nugrahaa.mahasiswaapparimvp.presenter.input.MahasiswaView

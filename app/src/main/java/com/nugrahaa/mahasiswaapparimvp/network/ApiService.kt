@@ -1,19 +1,15 @@
 package com.nugrahaa.mahasiswaapparimvp.network
 
-import com.nugrahaa.mahasiswa_app_ari.model.ResponseAction
-import com.nugrahaa.mahasiswa_app_ari.model.ResponseMahasiswa
+import com.nugrahaa.mahasiswaapparimvp.model.ResponseAction
+import com.nugrahaa.mahasiswaapparimvp.model.ResponseMahasiswa
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Single
-import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
 
     @GET("getData.php")
     fun getDataMahasiswa(): Flowable<ResponseMahasiswa>
-
-    @GET("getData.php")
-    fun getDataMahasiswaById(@Query("id_mahasiswa") id_mahasiswa: String): Flowable<ResponseMahasiswa>
 
     @FormUrlEncoded
     @POST("insert.php")

@@ -4,7 +4,7 @@ import com.nugrahaa.mahasiswaapparimvp.network.ApiConfig
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class MahasiswaPresenter(val mahasiswaView: MahasiswaView) {
+class MahasiswaPresenter(private val mahasiswaView: MahasiswaView) {
 
     fun checkStatus(nama: String, nohp: String, alamat: String) {
 
@@ -24,7 +24,7 @@ class MahasiswaPresenter(val mahasiswaView: MahasiswaView) {
         }
     }
     
-    fun addMahasiswa(nama: String, nohp: String, alamat: String) {
+    private fun addMahasiswa(nama: String, nohp: String, alamat: String) {
 
         if (nama.isNotEmpty() && nohp.isNotEmpty() && alamat.isNotEmpty()) {
             ApiConfig.getApiService().insertData(nama, nohp, alamat)
@@ -48,7 +48,7 @@ class MahasiswaPresenter(val mahasiswaView: MahasiswaView) {
 
     }
 
-    fun updateMahasiswa(id: String, nama: String, nohp: String, alamat: String) {
+    private fun updateMahasiswa(id: String, nama: String, nohp: String, alamat: String) {
         ApiConfig.getApiService().updateData(id, nama, nohp, alamat)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

@@ -1,6 +1,6 @@
 package com.nugrahaa.mahasiswaapparimvp.presenter.main
 
-import com.nugrahaa.mahasiswa_app_ari.model.Mahasiswa
+import com.nugrahaa.mahasiswaapparimvp.model.Mahasiswa
 
 interface MainView {
 
